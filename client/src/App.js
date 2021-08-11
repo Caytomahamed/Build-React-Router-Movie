@@ -49,7 +49,7 @@ export default function App () {
 
 
 // waxaan ku bartay 
-// steps 
+// steps
 
 // 1.ina aad soo dajisato rooter m install --save react-router-domReact-Router
 
