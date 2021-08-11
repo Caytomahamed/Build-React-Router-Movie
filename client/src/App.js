@@ -38,7 +38,7 @@ export default function App () {
          <MovieCard   movie={movieList}/>
        </Route>
 
-        <Route path='/'>
+        <Route path='/MovieList'>
         <MovieList movies={movieList}/>
         </Route>
       </switch>
