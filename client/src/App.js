@@ -4,6 +4,7 @@ import SavedList from './Movies/SavedList';
 import { Switch, Route, Link, Router } from "react-router-dom";
 import MovieList from './Movies/MovieList';
 import MovieCard from './Movies/MovieCard'
+
 export default function App () {
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
@@ -16,6 +17,7 @@ export default function App () {
           // Study this response with a console log
           // and set the response data to the 'movielist' state
           setMovieList(response.data)
+          setSaved(response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -32,17 +34,19 @@ export default function App () {
     <div>
       <SavedList list={[ /* This is stretch */]} />
 
-      <switch>
+      <Switch>
 
        <Route path="/MovieCard/:id">
          <MovieCard   movie={movieList}/>
        </Route>
 
         <Route path='/MovieList'>
-        <MovieList movies={movieList}/>
+        <MovieList  movies={movieList}/>
         </Route>
-      </switch>
-    
+      </Switch>
+
+      {/* <MovieInfo  movie ={movieList}/> */}
+
     </div>
   );
 }

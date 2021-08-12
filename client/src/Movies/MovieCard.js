@@ -1,13 +1,13 @@
 import React, { useState, useEffect,params} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import MovieInfo from './MovieInfo';
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
    
   let params = useParams()
-console.log(params);
+// console.log(params);
 
 
   // Change ^^^ this line and use a useParams hook to obtain the :id parameter from the URL, make sure to import useParams from react-router
@@ -36,27 +36,26 @@ console.log(params);
     return <div>Loading movie information...</div>;
   }
 
-  const { title, director, metascore, stars } = movie;
+  const { stars } = movie;
 
   return (
     <div className="save-wrapper">
-      <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
-        <h3>Actors</h3>
+       <div className="movie-card">
+       <MovieInfo movieInfo={movie}/>
+ 
+    <h3>Actors</h3>
 
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
-      </div>
+      {stars.map(star => (
+        <div key={star} className="movie-star">
+          {star}
+        </div>
+      ))}
+    </div>
+      
+
+
       <div className="save-button">Save</div>
+
     </div>
   );
 }
