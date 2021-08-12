@@ -16,6 +16,8 @@ export default function MovieList(props) {
         </Link>
 
       ))}
+
+
     </div>
   );
 }

@@ -1,14 +1,16 @@
 import React, { useState, useEffect,params} from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory} from 'react-router-dom';
 import MovieInfo from './MovieInfo';
-
+import SavedList from './SavedList';
 export default function Movie(props) {
   const [movie, setMovie] = useState();
-   
+
+  const {addToSavedList} =props
+
   let params = useParams()
 // console.log(params);
-
+  const history=useHistory();
 
   // Change ^^^ this line and use a useParams hook to obtain the :id parameter from the URL, make sure to import useParams from react-router
  
@@ -30,8 +32,10 @@ export default function Movie(props) {
   }, []);
 
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = evt => { }
-
+  const saveMovie = evt => { 
+   return {SavedList}
+  }
+console.log("savemovie",saveMovie);
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
@@ -54,8 +58,9 @@ export default function Movie(props) {
       
 
 
-      <div className="save-button">Save</div>
-
+      <div className="save-button"  >Save</div>
+ 
+      <button type='button' className='goBack-button' onClick={() => history.goBack()}>Go Back</button>
     </div>
   );
 }
